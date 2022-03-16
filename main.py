@@ -6,8 +6,9 @@ import matplotlib.pyplot as plt
 from scipy import stats
 import math
 
-first_df = pd.DataFrame(columns=["id", "sex", "age", "conditon", "organization_id"])
+first_df = pd.DataFrame(columns=["id", "sex", "age", "conditon", "progress", "organization_id"])
 
+progress = ["worse", "better", "improving", "the same"]
 sex_probability = .49
 
 def genAge(isMale): 
@@ -24,8 +25,9 @@ for num in range(100):
     age = math.floor(genAge(sex))
     condition = ""
     organization = ""
+    current_progress = random.choice(progress)
     
-    first_df.loc[num] = [num, sex, age, condition, organization]
+    first_df.loc[num] = [num, sex, age, condition, current_progress, organization]
     
 
 print(first_df)
