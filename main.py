@@ -3,9 +3,11 @@ import numpy as np
 import os
 import random
 import matplotlib.pyplot as plt
-import pickle
-import time
 
-from faker import Faker
+for num in range(100):
+    user_id = num
+    sex = ""
+    age = ""
+    condition = ""
+    
 
-fake = Faker()
