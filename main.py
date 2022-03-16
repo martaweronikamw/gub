@@ -4,6 +4,7 @@ import os
 import random
 import matplotlib.pyplot as plt
 from scipy import stats
+import math
 
 first_df = pd.DataFrame(columns=["id", "sex", "age", "conditon", "organization_id"])
 
@@ -20,7 +21,7 @@ def genAge(isMale):
 
 for num in range(100):
     sex = np.random.binomial(1,sex_probability)
-    age = genAge(sex)
+    age = math.floor(genAge(sex))
     condition = ""
     organization = ""
     
