@@ -20,7 +20,7 @@ def genAge(isMale):
     return age
   
 
-for num in range(100):
+for num in range(0, 100):
     sex = np.random.binomial(1,sex_probability)
     age = math.floor(genAge(sex))
     condition = ""
