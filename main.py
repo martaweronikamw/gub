@@ -6,6 +6,7 @@ from scipy import stats
 import math
 import sqlite3
 
+
 ## creating a dataframe
 
 first_df = pd.DataFrame(columns=["id", "sex", "age", "conditon", "progress", "organization_id"])
@@ -30,17 +31,14 @@ def genAge(isMale):
     return age
   
 
-for num in range(0, 100):
+for num in range(18, 100):
     sex = np.random.binomial(1,sex_probability)
     age = math.floor(genAge(sex))
     condition = ""
     organization = ""
     current_progress = random.choice(progress)
     
-    first_df.loc[num] = [num, sex, age, condition, current_progress, organization]
-    
-    
-    
+    first_df.loc[num] = [num, sex, age, condition, current_progress, organization]  
     
 first_df.to_sql("patients", conn, if_exists="replace")
 print(first_df)
