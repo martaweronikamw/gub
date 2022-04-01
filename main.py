@@ -6,10 +6,20 @@ from scipy import stats
 import math
 import sqlite3
 
+## creating a dataframe
+
 first_df = pd.DataFrame(columns=["id", "sex", "age", "conditon", "progress", "organization_id"])
 
 progress = ["worse", "better", "improving", "the same"]
 sex_probability = .49
+
+## database connection
+conn = sqlite3.connect('first_one.db')
+c = conn.cursor()
+
+c.execute('CREATE TABLE IF NOT EXISTS patient (id int primary key, sex varchar, age int, condition varchar, current_progress varchar, organization varchar)')
+conn.commit()
+
 
 def genAge(isMale): 
     age = 0
@@ -29,8 +39,11 @@ for num in range(0, 100):
     
     first_df.loc[num] = [num, sex, age, condition, current_progress, organization]
     
-
+    
+    
+    
+first_df.to_sql("patients", conn, if_exists="replace")
 print(first_df)
 
-conn = sqlite3.connect('./first_schema.sql')
-c = conn.cursor()
+c.close()
+conn.close()
