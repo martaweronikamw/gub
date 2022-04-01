@@ -1,10 +1,10 @@
 import pandas as pd
 import numpy as np
-import os
 import random
 import matplotlib.pyplot as plt
 from scipy import stats
 import math
+import sqlite3
 
 first_df = pd.DataFrame(columns=["id", "sex", "age", "conditon", "progress", "organization_id"])
 
@@ -31,3 +31,6 @@ for num in range(0, 100):
     
 
 print(first_df)
+
+conn = sqlite3.connect('./first_schema.sql')
+c = conn.cursor()
